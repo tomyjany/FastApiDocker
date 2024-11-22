@@ -1,0 +1,20 @@
+
+from fastapi import FastAPI
+from typing import Union
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"OCR": "Service"}
+
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: Union[str, None] = None):
+
+    return {"item_id": item_id, "q": q}
+
+@app.post('/test/{item}')
+def exp_item(item: int):
+    print("SQUARING")
+    return {"item_squared": item**2}
