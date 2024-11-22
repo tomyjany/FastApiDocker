@@ -8,13 +8,13 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Service": "subbing"}
 
 @app.post("/squaredplus/{item}")
 def operation(item: int):
     post_data = {"item": item}
     # response = requests.post('http://localhost:8090/test', data=int(item), timeout=10)
-    response = requests.post(f'http://localhost:8090/test/{item}', timeout=10)
+    response = requests.post(f'http://square:8090/test/{item}', timeout=10)
     if response.status_code != 200:
         print('Request failed with status code:', response.status_code)
         print('Response:', response.text)

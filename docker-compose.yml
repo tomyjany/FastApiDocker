@@ -1,0 +1,34 @@
+# version: '3.8'  # Using version 3.8 of the Compose file format
+
+# services:
+#   square:
+#     build: squareService/
+#     ports:
+#       - "8090:8090"
+#   sub:
+#     build: subService/
+#     ports:
+#       - "8091:8091"
+
+version: "3.9"
+
+services:
+  square:
+    build: squareService/
+    ports:
+      - "8090:8090"  # Expose port for external access (optional)
+    networks:
+      - app_network
+
+  sub:
+    build: subService/
+    ports:
+      - "8091:8091"  # Expose port for external access (optional)
+    networks:
+      - app_network
+    environment:
+      - SQUARE_API_URL=http://square:8090  # Use the service name as the hostname
+
+networks:
+  app_network:
+    driver: bridge
