@@ -20,7 +20,7 @@ def operation(item: int):
         print('Response:', response.text)
         return {"error": "ERROR CALLING OCR ENDPOINT"}
     data = response.json()
-    return {"custom_function": data['item_squared']+1}
+    return {"custom_function": data['item_squared']-100}
     print(data)
     return {"success": "happy"}
 
