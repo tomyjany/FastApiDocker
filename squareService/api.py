@@ -17,4 +17,4 @@ def read_item(item_id: int, q: Union[str, None] = None):
 @app.post('/test/{item}')
 def exp_item(item: int):
     print("SQUARING")
-    return {"item_squared": item**2}
+    return {"item_squared": item**(1/2)}
